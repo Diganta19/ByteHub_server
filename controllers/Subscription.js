@@ -31,8 +31,8 @@ export const AskSubscription = async(req,res)=>{
                 quantity:1
 
                 }],
-            success_url: `http://localhost:3000/success/${userId}?plan=${subscriptionPlan.name}`,
-            cancel_url: 'http://localhost:3000/',
+            success_url: `https://wondrous-halva-f4c999.netlify.app//success/${userId}?plan=${subscriptionPlan.name}`,
+            cancel_url: 'https://wondrous-halva-f4c999.netlify.app/',
         })
         
          res.json({url:session.url, planName:subscriptionPlan.name})
