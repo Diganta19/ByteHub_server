@@ -6,7 +6,6 @@ import crypto from "crypto"
 
 
 
-//const stripe = new Stripe('sk_test_51OPSz1SDb36Igos31yuik3SQrEIDvJgtrBpSx9fpDNaPXXs894uEfs4Lfq0ZXmgqrlx4D1V1XcjhLWKqD9iQmphZ00k5tj7QBt');
 
 const membership = new Map([
     [1,{name: 'SILVER', priceInCents: 10}],
@@ -72,7 +71,7 @@ export const verifyPayment = async(req,res)=>{
     
     try {
         const {razorpay_order_id,razorpay_payment_id,razorpay_signature} =  req.body
-        console.log(razorpay_order_id,razorpay_payment_id,razorpay_signature);
+     
         const sign = razorpay_order_id +"|"+razorpay_payment_id;
         const expectedSign = crypto.createHmac("sha256",process.env.KEY_SECRET).update(sign.toString()).digest("hex")
 
@@ -90,7 +89,7 @@ export const verifyPayment = async(req,res)=>{
 export const updateSubscription = async(req,res) =>{
     const{id:_id} = req.params;
     const {subplan} = req.body;
-    console.log("sub",subplan);
+   
     
 
     if(!mongoose.Types.ObjectId.isValid(_id)){

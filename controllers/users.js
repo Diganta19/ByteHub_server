@@ -7,7 +7,7 @@ export const getAllUsers = async (req,res)=>{
         const allUsers = await User.find();
         const allUserDetails = [];
         allUsers.forEach(user => {
-            allUserDetails.push({_id:user._id, name:user.name, about:user.about, tags:user.tags, joinedOn:user.joinedOn})
+            allUserDetails.push({_id:user._id, name:user.name, about:user.about, tags:user.tags, joinedOn:user.joinedOn,points:user.points,subscription:user.subscription})
         });
         res.status(200).json(allUserDetails)
     } catch (error) {
